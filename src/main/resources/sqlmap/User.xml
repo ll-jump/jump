@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 指定工作空间，要与接口名相同，源代码没有去看，猜测应该是通过"这里的namespace.下边方法的id"来定位方法的 -->
+<mapper namespace="com.ll.jump.mapper.UserMapper">
+
+    <!-- insert user -->
+    <insert id = "insert" parameterType="com.ll.jump.model.User">
+        INSERT INTO jump_user(id,name) VALUES(#{id},#{name});
+    </insert>
+
+    <!-- select user -->
+    <select id="select" parameterType="com.ll.jump.model.User" resultType="com.ll.jump.model.User">
+        SELECT id,name FROM jump_user WHERE id=#{id}
+    </select>
+
+</mapper>

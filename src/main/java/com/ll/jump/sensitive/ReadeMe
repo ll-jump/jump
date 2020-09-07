@@ -1,0 +1,64 @@
+1.对需要脱敏的DTO类相关字段进行注解，支持类级联
+    主要用到两个注解: @Sensitive 和 @SensitiveJson
+    具体规则请关注枚举类：SensitiveRulesEnum.java
+
+@Sensitive 注解使用
+	/**
+     * 卡号 .card_no
+     */
+    @Sensitive(format = SensitiveRulesEnum.CARD_NO)
+    private String              cardNo;
+    /**
+     * 证件号 certi_no
+     */
+    @Sensitive(format = SensitiveRulesEnum.HASH)
+    private String              certiNo;
+    /**
+     * list卡号
+     */
+    @Sensitive(format = SensitiveRulesEnum.CARD_NO)
+    private List<String>        cardNoList;
+
+@SensitiveJson 注解使用
+	/**
+     * 容器map
+     */
+    @SensitiveJson(format = "{\"cardNo\":\"CARD_NO\",\"certiNo\":\"CERTI_NO\",\"name\":\"NAME\"}")
+    private Map<String, Object> map;
+    /**
+     * 容器list
+     */
+    @SensitiveJson(format = "{\"name\":\"NAME\"}")
+    private List<Object>        list;
+    /**
+     * extInfo为一json串
+     */
+    @SensitiveJson(format = "{\"cardNo\":\"CARD_NO\",\"certiNo\":\"CERTI_NO\"}")
+    private String              extInfo;
+
+2.最后覆写toString方法
+	@Override
+   public String toString() {
+       return SensitiveStringBuilder.reflectionToString(this);
+   }
+
+
+3.完成，有需要时直接打印，以标准的JSON格式输出结果
+
+4.对单字段脱敏，使用
+System.out.println("单字段脱敏:" + SensitiveProcessUtils.shield(SensitiveRulesEnum.CERTI_NO, "410526198809018242"));
+System.out.println("单字段MD5:" + SensitiveProcessUtils.shield(SensitiveRulesEnum.HASH, tdto.getCardNo()));
+
+5.同时支持对原string串的脱敏，万能正则用上，支持级联
+ 使用场景，如果对端没有使用此模块，那么得到的是JSON或默认的toString输出，此时可以用到对String进行正则脱敏
+ SensitiveProcessUtils.dataShield(person.toString(), immutmap)
+第一个字段是Stirng类型，第二个字段是脱敏规则枚举，如
+Person person = new Person();
+person.setName("刘德华");
+person.setCertiNo("431224190011254215");
+person.setCardNo("62231245625378958");
+Map<String, SensitiveRulesEnum> immutmap = ImmutableMap.of("name", SensitiveRulesEnum.NAME, "cardNo",SensitiveRulesEnum.CARD_NO, "certiNo", SensitiveRulesEnum.CERTI_NO);
+System.out.println(SensitiveProcessUtils.dataShield(person.toString(), immutmap));
+
+得到结果：
+Person(name=刘**, certiNo=4****************5, cardNo=6223****8958, tel=null, exinfo=null)
