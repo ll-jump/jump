@@ -1,2 +1,2 @@
 # jump
-jump framework
+自测项目
