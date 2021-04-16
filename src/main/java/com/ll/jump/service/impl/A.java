@@ -21,7 +21,7 @@ public class A {
     // 计数取模
     private int MOD = 3;
 
-    private void printChar(int threadIdentify, String s) {
+    public void printChar(int threadIdentify, String s) {
 //        for (int i = 0; i < LOOP_NUM; ) {
 //            lock.lock();
 //            try {
