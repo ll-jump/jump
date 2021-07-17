@@ -1,9 +1,7 @@
 package com.ll.jump.controller;
 
-import com.ll.jump.exception.ServiceErrorCode;
-import com.ll.jump.exception.ServiceException;
 import com.ll.jump.model.User;
-import com.ll.jump.result.ServiceResult;
+import com.ll.jump.base.result.ServiceResult;
 import com.ll.jump.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.sql.rowset.serial.SerialException;
 
 /**
  * 〈测试〉

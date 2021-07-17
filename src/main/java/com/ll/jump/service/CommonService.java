@@ -2,8 +2,8 @@ package com.ll.jump.service;
 
 import com.google.gson.Gson;
 
-import com.ll.jump.exception.ServiceException;
-import com.ll.jump.result.ServiceResult;
+import com.ll.jump.base.exception.ServiceException;
+import com.ll.jump.base.result.ServiceResult;
 
 /**
  * 公共接口

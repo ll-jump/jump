@@ -1,6 +1,6 @@
 package com.ll.jump.model;
 
-import com.ll.jump.mask.Mask;
+import com.ll.jump.base.mask.Mask;
 
 import java.io.Serializable;
 import java.util.Objects;

@@ -130,6 +130,13 @@
             <artifactId>jedis</artifactId>
             <version>3.6.0</version>
         </dependency>
+
+        <!-- kafka -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.10.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

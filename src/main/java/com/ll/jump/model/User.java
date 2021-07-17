@@ -1,8 +1,6 @@
 package com.ll.jump.model;
 
-import com.ll.jump.mask.Mask;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import com.ll.jump.base.mask.Mask;
 
 import java.io.Serializable;
 import java.util.Objects;

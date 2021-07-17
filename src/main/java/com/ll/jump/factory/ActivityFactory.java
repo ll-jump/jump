@@ -1,18 +1,13 @@
 package com.ll.jump.factory;
 
-import com.ll.jump.exception.ServiceErrorCode;
-import com.ll.jump.exception.ServiceException;
+import com.ll.jump.base.exception.ServiceErrorCode;
+import com.ll.jump.base.exception.ServiceException;
 import com.ll.jump.service.ActivityService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-import javax.sql.rowset.serial.SerialException;
 
 /**
  * 〈活动工厂类〉
